@@ -137,11 +137,10 @@
                                     </tableView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="ujp-hv-5ZU" firstAttribute="top" secondItem="JpB-vB-Vte" secondAttribute="bottom" constant="1" id="0gv-Uw-i57"/>
+                                    <constraint firstItem="ujp-hv-5ZU" firstAttribute="top" secondItem="JpB-vB-Vte" secondAttribute="bottom" constant="1" id="M5b-Y9-AVP"/>
                                     <constraint firstAttribute="trailing" secondItem="JpB-vB-Vte" secondAttribute="trailing" constant="20" id="bMi-EG-2Tz"/>
                                     <constraint firstItem="JpB-vB-Vte" firstAttribute="leading" secondItem="iUL-hu-WeW" secondAttribute="leading" constant="20" id="hnj-23-6yl"/>
                                     <constraint firstItem="ujp-hv-5ZU" firstAttribute="leading" secondItem="iUL-hu-WeW" secondAttribute="leading" constant="20" id="ikS-rs-T6e"/>
-                                    <constraint firstAttribute="trailing" secondItem="ujp-hv-5ZU" secondAttribute="trailing" constant="20" id="rnq-R6-rs0"/>
                                     <constraint firstAttribute="bottom" secondItem="ujp-hv-5ZU" secondAttribute="bottom" id="uTr-y5-OJd"/>
                                 </constraints>
                             </stackView>
@@ -165,6 +164,7 @@
                             <constraint firstItem="iYm-9Z-vDt" firstAttribute="trailing" secondItem="yLq-Hq-yv3" secondAttribute="trailing" constant="273" id="NAK-GD-MvG"/>
                             <constraint firstItem="8gt-tk-JlT" firstAttribute="top" secondItem="26e-WB-dmb" secondAttribute="bottom" constant="30" id="Nue-lm-EHo"/>
                             <constraint firstItem="XzA-mo-FUT" firstAttribute="leading" secondItem="iYm-9Z-vDt" secondAttribute="leading" constant="20" id="OgS-rG-DtK"/>
+                            <constraint firstItem="Ag2-E4-pcH" firstAttribute="leading" secondItem="26e-WB-dmb" secondAttribute="trailing" constant="94" id="Phm-sU-H4D"/>
                             <constraint firstItem="iYm-9Z-vDt" firstAttribute="trailing" secondItem="XzA-mo-FUT" secondAttribute="trailing" constant="20" id="Uwl-0E-bwp"/>
                             <constraint firstItem="iYm-9Z-vDt" firstAttribute="trailing" secondItem="iUL-hu-WeW" secondAttribute="trailing" id="Vw3-09-s3c"/>
                             <constraint firstItem="iUL-hu-WeW" firstAttribute="top" secondItem="yLq-Hq-yv3" secondAttribute="bottom" constant="30" id="ddv-Qd-CFe"/>
@@ -178,7 +178,7 @@
                         <barButtonItem key="leftBarButtonItem" title="Back" id="uk2-zO-CDG">
                             <connections>
                                 <action selector="touchBackButton:" destination="sLk-7m-kwk" id="OBZ-zY-dKa"/>
-                                <segue destination="sLk-7m-kwk" kind="unwind" unwindAction="unwindWithSegue:" id="yCa-Yo-gpg"/>
+                                <segue destination="sLk-7m-kwk" kind="unwind" unwindAction="unwindWithSegue:" id="ME6-Ut-Mvl"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -209,31 +209,30 @@
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="movie cell" rowHeight="100" id="i4W-FT-635" customClass="MovieListTableViewCell" customModule="Flick_Me" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="i4W-FT-635" id="SNn-Jg-eow">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="i4W-FT-635" id="SNn-Jg-eow">
                                             <rect key="frame" x="0.0" y="0.0" width="342" height="99.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="AoW-BW-MrG">
-                                                    <rect key="frame" x="5" y="5" width="89.5" height="89.5"/>
+                                                    <rect key="frame" x="10" y="5.5" width="75" height="90"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="89.5" id="9P4-HY-G6Q"/>
-                                                        <constraint firstAttribute="height" constant="89.5" id="Uif-7K-i2I"/>
-                                                        <constraint firstAttribute="width" secondItem="AoW-BW-MrG" secondAttribute="height" multiplier="1:1" id="lsl-H6-9AN"/>
+                                                        <constraint firstAttribute="width" constant="75" id="9P4-HY-G6Q"/>
+                                                        <constraint firstAttribute="height" constant="90" id="Uif-7K-i2I"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YSH-VX-LJU">
-                                                    <rect key="frame" x="104.5" y="21" width="224.5" height="21"/>
+                                                    <rect key="frame" x="95" y="21.5" width="234" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="AoW-BW-MrG" firstAttribute="centerY" secondItem="SNn-Jg-eow" secondAttribute="centerY" id="6uG-e0-5bq"/>
-                                                <constraint firstItem="AoW-BW-MrG" firstAttribute="leading" secondItem="SNn-Jg-eow" secondAttribute="leading" constant="5" id="Gvc-R2-evG"/>
+                                                <constraint firstItem="AoW-BW-MrG" firstAttribute="leading" secondItem="SNn-Jg-eow" secondAttribute="leading" constant="10" id="Gvc-R2-evG"/>
                                                 <constraint firstItem="YSH-VX-LJU" firstAttribute="top" secondItem="SNn-Jg-eow" secondAttribute="topMargin" constant="10" id="RvZ-g0-4hR"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="YSH-VX-LJU" secondAttribute="trailing" constant="5" id="kwW-jY-Owq"/>
-                                                <constraint firstItem="AoW-BW-MrG" firstAttribute="height" secondItem="SNn-Jg-eow" secondAttribute="height" multiplier="0.9" id="yTN-lj-Wy7"/>
+                                                <constraint firstItem="AoW-BW-MrG" firstAttribute="top" secondItem="SNn-Jg-eow" secondAttribute="top" constant="5" id="mEK-KN-ZXk"/>
+                                                <constraint firstAttribute="bottom" secondItem="AoW-BW-MrG" secondAttribute="bottom" constant="5" id="vaR-Mi-g1L"/>
                                                 <constraint firstItem="YSH-VX-LJU" firstAttribute="leading" secondItem="AoW-BW-MrG" secondAttribute="trailing" constant="10" id="zfy-3k-CzP"/>
                                             </constraints>
                                         </tableViewCellContentView>

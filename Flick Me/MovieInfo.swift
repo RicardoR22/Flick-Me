@@ -62,7 +62,6 @@ struct MovieInfo {
                                     if let movieObject = try? MovieInfo(json: dataPoint) {
                                         for genres in movieObject.genre {
                                             if genres == genre {
-                                                print(String(genres) + "=" + String(genre))
                                                 movieList.append(movieObject)
                                             }
                                         }

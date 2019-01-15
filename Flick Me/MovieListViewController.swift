@@ -43,7 +43,9 @@ extension MovieListViewController: UITableViewDelegate, UITableViewDataSource {
             
             if error == nil {
                 let loadedImage = UIImage(data: data!)
-                cell.imageMovieThumbnail.image = loadedImage
+                DispatchQueue.main.async { 
+                    cell.imageMovieThumbnail.image = loadedImage
+                }
             
             }
         }

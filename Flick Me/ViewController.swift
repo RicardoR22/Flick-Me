@@ -48,12 +48,12 @@ class ViewController: UIViewController {
     
     func toggleTable(toggle: Bool) {
         if toggle {
-            UIView.animate(withDuration: 0.2) {
+            UIView.animate(withDuration: 0.3) {
                 self.genreTableView.isHidden = false
                 
             }
         } else {
-            UIView.animate(withDuration: 0.2) {
+            UIView.animate(withDuration: 0.3) {
                 self.genreTableView.isHidden = true
                 
             }
@@ -64,28 +64,35 @@ class ViewController: UIViewController {
         yearLabel.text = String(Int(sender.value))
     }
     
-    
-    @IBAction func submitClicked(_ sender: Any) {
-        
-        MovieInfo.getMovieList(genre: genreId) { (results:[MovieInfo]) in
-            for result in results {
-                self.searchResults.append(result)
-                print(self.searchResults)
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let identifier = segue.identifier {
+            switch identifier {
+            case "show movie list":
+                guard let movieListViewController = segue.destination as? MovieListViewController else {
+                    
+                    //NOTE: error handling
+                    return print("storyboard not set up correctly")
+                }
+                movieListViewController.results = searchResults
+            default: break
             }
         }
         
         
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let movieListViewController = segue.destination as? MovieListViewController else {
-            
-            //NOTE: error handling
-            return print("storyboard not set up correctly, 'show entry details' segue needs to segue to a 'NewAnimeEntryViewController'")
+    @IBAction func submitClicked(_ sender: Any) {
+        
+        MovieInfo.getMovieList(genre: genreId) { (results:[MovieInfo]) in
+            for result in results {
+                self.searchResults.append(result)
+            }
         }
-        movieListViewController.results = searchResults
+        
         
     }
+    
+    
     
     
     @IBAction func unwind(segue:UIStoryboardSegue) { }

@@ -194,7 +194,7 @@
             </objects>
             <point key="canvasLocation" x="1756" y="133.5832083958021"/>
         </scene>
-        <!--Movie List View Controller-->
+        <!--Title-->
         <scene sceneID="im4-VG-ZHZ">
             <objects>
                 <viewController id="gNO-qE-2Cy" customClass="MovieListViewController" customModule="Flick_Me" customModuleProvider="target" sceneMemberID="viewController">
@@ -258,13 +258,66 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ccz-jf-IVb"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Title" id="61M-oK-QrP"/>
                     <connections>
                         <outlet property="tableView" destination="eqo-42-xfq" id="ZIe-eL-ej5"/>
+                        <segue destination="6nU-id-vfQ" kind="show" identifier="show movie description" id="5Sp-D4-jNE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iDO-6T-cdi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2434" y="134"/>
+        </scene>
+        <!--Title-->
+        <scene sceneID="p7a-v1-Sw0">
+            <objects>
+                <viewController id="6nU-id-vfQ" customClass="MovieDescriptionViewController" customModule="Flick_Me" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="IlI-EB-Sf3">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="752" translatesAutoresizingMaskIntoConstraints="NO" id="wcF-d3-efd">
+                                <rect key="frame" x="68" y="89" width="239" height="300"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="300" id="xeh-uA-jke"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wcd-GK-3Tu">
+                                <rect key="frame" x="20" y="419" width="95" height="20.5"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z3f-Jf-otI">
+                                <rect key="frame" x="20" y="459.5" width="335" height="197.5"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="wcF-d3-efd" firstAttribute="leading" secondItem="uAs-Gw-S6V" secondAttribute="leading" constant="68" id="6JP-II-B7U"/>
+                            <constraint firstItem="z3f-Jf-otI" firstAttribute="top" secondItem="wcd-GK-3Tu" secondAttribute="bottom" constant="20" id="EuY-EI-3Tl"/>
+                            <constraint firstItem="wcd-GK-3Tu" firstAttribute="leading" secondItem="uAs-Gw-S6V" secondAttribute="leading" constant="20" id="P7Z-qZ-bp9"/>
+                            <constraint firstItem="uAs-Gw-S6V" firstAttribute="trailing" secondItem="z3f-Jf-otI" secondAttribute="trailing" constant="20" id="SVj-5i-xze"/>
+                            <constraint firstItem="wcF-d3-efd" firstAttribute="top" secondItem="uAs-Gw-S6V" secondAttribute="top" constant="25" id="TRX-F4-Qio"/>
+                            <constraint firstItem="wcd-GK-3Tu" firstAttribute="top" secondItem="wcF-d3-efd" secondAttribute="bottom" constant="30" id="cPY-nJ-Zbu"/>
+                            <constraint firstItem="uAs-Gw-S6V" firstAttribute="trailing" secondItem="wcF-d3-efd" secondAttribute="trailing" constant="68" id="e8o-T9-zXk"/>
+                            <constraint firstItem="z3f-Jf-otI" firstAttribute="leading" secondItem="uAs-Gw-S6V" secondAttribute="leading" constant="20" id="eug-Ih-iu2"/>
+                            <constraint firstItem="uAs-Gw-S6V" firstAttribute="bottom" secondItem="z3f-Jf-otI" secondAttribute="bottom" constant="10" id="x2L-ed-hef"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="uAs-Gw-S6V"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Title" id="tO6-WH-lzc"/>
+                    <connections>
+                        <outlet property="movieDescriptionLabel" destination="z3f-Jf-otI" id="2zZ-61-MHt"/>
+                        <outlet property="moviePoster" destination="wcF-d3-efd" id="YDA-o3-gBY"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wTu-z6-MW8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3165.5999999999999" y="133.5832083958021"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="I0F-6f-yGC">

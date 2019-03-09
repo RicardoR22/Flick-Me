@@ -23,8 +23,6 @@ class ViewController: UIViewController {
     var genres = ["Action": 28 , "Comedy": 35, "Romance": 10749, "Horror": 27, "Animated": 16, "Drama": 18, "Mystery": 9648]
     var searchResults : [MovieInfo] = []
     
-
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         if let genreTableView = genreTableView {
@@ -74,6 +72,7 @@ class ViewController: UIViewController {
                     return print("storyboard not set up correctly")
                 }
                 movieListViewController.results = searchResults
+                movieListViewController.navigationItem.title = selectedGenre
             default: break
             }
         }
@@ -115,6 +114,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         genreButton.setTitle("\(Array(genres)[indexPath.row].key)", for: .normal)
         genreId = Array(genres)[indexPath.row].value
+        selectedGenre = Array(genres)[indexPath.row].key
         print(selectedGenre)
         searchResults.removeAll()
         MovieInfo.getMovieList(genre: genreId) { (results:[MovieInfo]) in

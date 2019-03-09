@@ -84,5 +84,41 @@ struct MovieInfo {
         task.resume()
         
     }
+    
+    static func getRandomMovie(page: Int, completion: @escaping (_ movieList: [MovieInfo]) -> ()) {
+        let url = basePath + "/top_rated" + apiKey + "&language=en-US&page=" + String(page)
+        let request = URLRequest(url: URL(string: url)!)
+        
+        let task = URLSession.shared.dataTask(with: request) { (data: Data?, response: URLResponse?, error: Error?) in
+            var movieList:[MovieInfo] = []
+            
+            if let data = data {
+                
+                do {
+                    if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String:Any] {
+                        if let popularMovieList = json["results"] as? [[String:Any]] {
+                            //                            if let movieData = popularMovieList[""] as? [[String:Any]] {
+                            for dataPoint in popularMovieList {
+                                if let movieObject = try? MovieInfo(json: dataPoint) {
+                                    movieList.append(movieObject)
+                                }
+                                //                                }
+                            }
+                        }
+                        
+                    }
+                }catch {
+                    print(error.localizedDescription)
+                }
+                
+                completion(movieList)
+                
+            }
+            
+            
+        }
+        task.resume()
+        
+    }
 }
 

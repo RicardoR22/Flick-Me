@@ -28,6 +28,9 @@
                                 <state key="normal" title="Random Movie">
                                     <color key="titleColor" name="windowBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </state>
+                                <connections>
+                                    <action selector="showRandomMovie:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2Jd-py-bNb"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nJm-Xf-eND">
                                 <rect key="frame" x="66" y="164" width="242" height="159"/>
@@ -56,6 +59,9 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="Flick Me" id="TIb-79-mtI"/>
+                    <connections>
+                        <segue destination="6nU-id-vfQ" kind="show" identifier="show random movie" id="0vx-Rb-rma"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -64,7 +70,7 @@
         <!--Recommendation Filter-->
         <scene sceneID="K5K-C1-1rp">
             <objects>
-                <viewController title="Recommendation Filter" id="spx-Z4-tx8" customClass="ViewController" customModule="Flick_Me" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Recommendation Filter" id="spx-Z4-tx8" customClass="FilterViewController" customModule="Flick_Me" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="qtM-ee-RIY">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -184,8 +190,8 @@
                     </navigationItem>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="genreButton" destination="JpB-vB-Vte" id="Vhd-fd-Daa"/>
-                        <outlet property="genreTableView" destination="ujp-hv-5ZU" id="vk1-Jl-OZv"/>
+                        <outlet property="genreButton" destination="JpB-vB-Vte" id="V6J-Ye-07t"/>
+                        <outlet property="genreTableView" destination="ujp-hv-5ZU" id="R7h-5d-r0d"/>
                         <outlet property="yearLabel" destination="Ag2-E4-pcH" id="ffJ-Gg-qwI"/>
                     </connections>
                 </viewController>
@@ -317,7 +323,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wTu-z6-MW8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3165.5999999999999" y="133.5832083958021"/>
+            <point key="canvasLocation" x="1756" y="896"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="I0F-6f-yGC">
@@ -338,4 +344,7 @@
             <point key="canvasLocation" x="215" y="134"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="0vx-Rb-rma"/>
+    </inferredMetricsTieBreakers>
 </document>

@@ -1,13 +1,14 @@
 # Flick-Me
 
-Get movie recommendations based on selected genre. Recommendations come from The Movie DB top movies.
+Have you ever been in the mood to watch a movie but were unsure what to watch? 
+
+Now you don't have to! Get movie reccomendations with just a few taps! Get reccomendations based on genre or just get a random movie suggestion! 
+
+
+Recommendations come from The Movie DB top movies.
 
 Latest Updates: 
-- You can now click on a movie to get it's description
-- You can now get a random movie suggestion!
-
-Coming Soon:
-- Select earliest release date.
+- Updated UI and UX
 
 
 Made in XCode using Swift and UIKit.

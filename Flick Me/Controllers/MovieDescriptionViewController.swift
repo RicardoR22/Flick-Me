@@ -12,20 +12,33 @@ import UIKit
 
 class MovieDescriptionViewController: UIViewController {
     
+	var descriptionView: MovieDescriptionView!
     var summary: String?
     var posterURL: String?
 
-    @IBOutlet weak var moviePoster: UIImageView!
-    @IBOutlet weak var movieDescriptionLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+		setup()
         setupMovieInfo()
     }
+	
+	func setup() {
+		setupView()
+		
+	}
+	
+	
+	func setupView() {
+		let mainView = MovieDescriptionView(frame: self.view.frame)
+		self.descriptionView = mainView
+		self.view.addSubview(mainView)
+		
+	}
     
     func setupMovieInfo(){
         guard let posterURL = posterURL else {
-            self.movieDescriptionLabel.text = summary
+			descriptionView.descriptionLabel.text = summary
             return
         }
         let basePath = "https://image.tmdb.org/t/p/w200/"
@@ -37,8 +50,8 @@ class MovieDescriptionViewController: UIViewController {
             if error == nil {
                 let loadedImage = UIImage(data: data!)
                 DispatchQueue.main.async {
-                    self.moviePoster.image = loadedImage
-                    self.movieDescriptionLabel.text = self.summary
+					self.descriptionView.posterImage.image = loadedImage
+					self.descriptionView.descriptionLabel.text = self.summary
                 }
             }
         }

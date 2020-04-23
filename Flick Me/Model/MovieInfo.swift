@@ -22,9 +22,6 @@ struct MovieInfo {
     
 
     
-    
-   
-    
     init(json:[String:Any]) throws {
         guard let title = json["title"] as? String else {throw SerializationError.missing("Title is missing")}
         guard let summary = json["overview"] as? String else {throw SerializationError.missing("Summary is missing")}
@@ -57,7 +54,7 @@ struct MovieInfo {
                 do {
                     if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String:Any] {
                         if let popularMovieList = json["results"] as? [[String:Any]] {
-//                            if let movieData = popularMovieList[""] as? [[String:Any]] {
+
                                 for dataPoint in popularMovieList {
                                     if let movieObject = try? MovieInfo(json: dataPoint) {
                                         for genres in movieObject.genre {
@@ -66,7 +63,6 @@ struct MovieInfo {
                                             }
                                         }
                                     }
-//                                }
                             }
                         }
                         

@@ -10,15 +10,35 @@ import UIKit
 
 class MovieListViewController: UIViewController {
     
+	var movieListView: MovieListView!
     var results:[MovieInfo] = []
-    
-    @IBOutlet weak var tableView: UITableView!
-    
-    
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
+		setup()
     }
+	
+	func setup() {
+		setupView()
+		navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(backTapped))
+		movieListView.tableView.register(MovieListTableViewCell.self, forCellReuseIdentifier: "movie cell")
+
+	}
+	
+	
+	func setupView() {
+		let mainView = MovieListView(frame: self.view.frame)
+		self.movieListView = mainView
+		movieListView.tableView.delegate = self
+		movieListView.tableView.dataSource = self
+		self.view.addSubview(mainView)
+		
+	}
+	
+	@objc func backTapped() {
+		navigationController?.popViewController(animated: true)
+	}
     
     func pullData(entry: MovieInfo, completion: @escaping (_ loadedImage: UIImage)-> Void){
         let basePath = "https://image.tmdb.org/t/p/w200/"
@@ -37,22 +57,6 @@ class MovieListViewController: UIViewController {
         task.resume()
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let identifier = segue.identifier {
-            switch identifier {
-            case "show movie description":
-                if let movieDescriptionViewController = segue.destination as? MovieDescriptionViewController, let movie = sender as? MovieInfo {
-                    movieDescriptionViewController.summary = movie.summary
-                    movieDescriptionViewController.posterURL = movie.poster
-                    movieDescriptionViewController.navigationItem.title = movie.title
-                }
-                
-            default: break
-            }
-        }
-        
-        
-    }
     
 }
 
@@ -65,10 +69,10 @@ extension MovieListViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "movie cell", for: indexPath) as! MovieListTableViewCell
         
         let entry = results[indexPath.row]
-        cell.labelMovieTitle.text = entry.title
+        cell.movieTitleLabel.text = entry.title
 
         pullData(entry: entry){ loadedImage in
-            cell.imageMovieThumbnail.image = loadedImage
+            cell.moviePoster.image = loadedImage
         }
         
         return cell
@@ -80,9 +84,13 @@ extension MovieListViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let entry = results[indexPath.row]
+        let movie = results[indexPath.row]
         
-        performSegue(withIdentifier: "show movie description", sender: entry)
+        let descriptionVC = MovieDescriptionViewController()
+		descriptionVC.summary = movie.summary
+		descriptionVC.posterURL = movie.poster
+		self.navigationController?.pushViewController(descriptionVC, animated: true)
+		descriptionVC.navigationItem.title = movie.title
     }
 
     
